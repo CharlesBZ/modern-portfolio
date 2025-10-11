@@ -27,7 +27,7 @@ const projects = [
       "Full-featured e-commerce platform with user authentication and payment processing.",
     image: "/projects/abc-farms.png",
     tags: ["React", "Node.js", "Stripe"],
-    demoUrl: "https://github.com/CharlesBZ/abc-farms",
+    demoUrl: "https://abc-farms.vercel.app/",
     githubUrl: "https://github.com/CharlesBZ/abc-farms",
   },
 ];
