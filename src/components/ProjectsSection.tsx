@@ -3,7 +3,7 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 const projects = [
   {
     id: 1,
-    title: "Web Scraper App",
+    title: "Profile Scraper App",
     description: "Profile Scraper App",
     image: "/projects/web-scraper.png",
     tags: ["React", "TailwindCSS", "Supabase"],
@@ -29,6 +29,16 @@ const projects = [
     tags: ["React", "Node.js", "Stripe"],
     demoUrl: "https://abc-farms.vercel.app/",
     githubUrl: "https://github.com/CharlesBZ/abc-farms",
+  },
+  {
+    id: 4,
+    title: "Web Scraper",
+    description:
+      "Web scraper that extracts data from websites and displays it in a user-friendly format.",
+    image: "/projects/abc-farms.png",
+    tags: ["React", "Node.js", "Stripe"],
+    demoUrl: "https://github.com/CharlesBZ/web-scraper-python",
+    githubUrl: "https://github.com/CharlesBZ/web-scraper-python",
   },
 ];
 
