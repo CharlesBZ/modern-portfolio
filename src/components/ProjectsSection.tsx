@@ -35,7 +35,7 @@ const projects = [
     title: "Web Scraper",
     description:
       "Web scraper that extracts data from websites and displays it in a user-friendly format.",
-    image: "/projects/abc-farms.png",
+    image: "/projects/web-scraper.png",
     tags: ["React", "Node.js", "Stripe"],
     demoUrl: "https://github.com/CharlesBZ/web-scraper-python",
     githubUrl: "https://github.com/CharlesBZ/web-scraper-python",
