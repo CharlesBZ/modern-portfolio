@@ -18,7 +18,7 @@ type ToastProps = {
   action?: React.ReactNode;
   onOpenChange?: (open: boolean) => void;
   // Allow any extra props that Radix Toast might pass
-  [key: string]: any;
+  [key: string]: unknown;
 };
 
 type State = {
@@ -26,11 +26,18 @@ type State = {
 };
 
 type AddToastAction = { type: "ADD_TOAST"; toast: ToastProps };
-type UpdateToastAction = { type: "UPDATE_TOAST"; toast: Partial<ToastProps> & { id: string } };
+type UpdateToastAction = {
+  type: "UPDATE_TOAST";
+  toast: Partial<ToastProps> & { id: string };
+};
 type DismissToastAction = { type: "DISMISS_TOAST"; toastId?: string };
 type RemoveToastAction = { type: "REMOVE_TOAST"; toastId?: string };
 
-type Action = AddToastAction | UpdateToastAction | DismissToastAction | RemoveToastAction;
+type Action =
+  | AddToastAction
+  | UpdateToastAction
+  | DismissToastAction
+  | RemoveToastAction;
 
 const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
 
@@ -62,7 +69,7 @@ const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         toasts: state.toasts.map((t) =>
-          t.id === action.toast.id ? { ...t, ...action.toast } : t
+          t.id === action.toast.id ? { ...t, ...action.toast } : t,
         ),
       };
 
@@ -85,7 +92,7 @@ const reducer = (state: State, action: Action): State => {
                 ...t,
                 open: false,
               }
-            : t
+            : t,
         ),
       };
     }
@@ -98,7 +105,9 @@ const reducer = (state: State, action: Action): State => {
       }
       return {
         ...state,
-        toasts: state.toasts.filter((t) => t.id !== (action as RemoveToastAction).toastId),
+        toasts: state.toasts.filter(
+          (t) => t.id !== (action as RemoveToastAction).toastId,
+        ),
       };
     default:
       return state;
@@ -116,7 +125,9 @@ function dispatch(action: Action) {
   });
 }
 
-function toast(props: Omit<Partial<ToastProps>, "id"> & { title?: string } = {}) {
+function toast(
+  props: Omit<Partial<ToastProps>, "id"> & { title?: string } = {},
+) {
   const id = genId();
 
   const update = (p: Partial<ToastProps>) =>
